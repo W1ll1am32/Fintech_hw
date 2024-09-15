@@ -1,0 +1,55 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    
+    <changeSet author="u.goncharenko" id="create-client-table">
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="client_pkey"/>
+            </column>
+            
+            <column name="first_name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="second_name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="third_name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="birthday" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="passport_number" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="phone" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="salary" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="u.goncharenko" id="add-unique-constraint-client">  
+    	<addUniqueConstraint columnNames="passport_number" constraintName="passport_number_unique" tableName="client"/>
+    </changeSet>
+
+</databaseChangeLog>

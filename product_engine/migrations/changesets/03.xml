@@ -1,0 +1,57 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    
+    <changeSet author="u.goncharenko" id="create-agreement-table">
+        <createTable tableName="agreement">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="agreement_pkey"/>
+            </column>
+            
+            <column name="product_code" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="client_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="term" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="interest" type="DOUBLE PRECISION">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="principal_amount" type="DOUBLE PRECISION">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="origination_amount" type="DOUBLE PRECISION">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="disbursement_datetime" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="status" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="u.goncharenko" id="create-foreign-keys-agreement">
+        <addForeignKeyConstraint baseColumnNames="product_code" baseTableName="agreement" constraintName="product_
+        code_fk" referencedColumnNames="code" referencedTableName="product" />
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="agreement" constraintName="client_id_fk" referencedColumnNames="id" referencedTableName="client" />
+    </changeSet>
+    
+</databaseChangeLog>

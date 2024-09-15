@@ -1,0 +1,67 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    
+    <changeSet author="u.goncharenko" id="create-product-table">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="product_pkey"/>
+            </column>
+            
+            <column name="title" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="version" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="code" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="min_term" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="max_term" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="min_interest" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="max_interest" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="min_principal_amount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="max_principal_amount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="min_origination_amount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="max_origination_amount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="u.goncharenko" id="add-unique-constraint-product">  
+    	<addUniqueConstraint columnNames="code" constraintName="code_unique" tableName="product"/>
+    </changeSet>
+    
+</databaseChangeLog>
